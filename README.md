@@ -21,15 +21,14 @@ Maven central **is** safe, but mvncentral.net **is not**.
 
 Many of the domains may appear to be suspended. This is due to the fact that Kant, the purchaser of the domains and person who spread the malware this program attempts to block, purchased these domains fraudulently. Though they are suspended, I have decided to include them anyways.
 
-All releases are Windows specific. If you'd like one for Linux, I'd suggest https://github.com/HackingMC/HostsMod (though there's no known rats from Kant for Linux)
-
+All releases are linux specific. If you'd like one for windows, I'd suggest https://github.com/GardeningTool/HostsMod
 ### Usage
 
-Run as administrator
+Run as sudo
 
 ### Clarification
 
-If you run netstat after running HostsMod, you will likely see connections to mvncentral.net. This is caused by HostsMod pointing everything to localhost (127.0.0.1). To prove this, open a command prompt window and type "ping mvncentral.net". The reply should be "Reply from 127.0.0.1". This shows that mvncentral.net now points to localhost.
+If you run curl/ping after running HostsMod, you will likely see connections to mvncentral.net. This is caused by HostsMod pointing everything to localhost (127.0.0.1). To prove this, open a command prompt window and type "ping mvncentral.net". The reply should be "Reply from 127.0.0.1". This shows that mvncentral.net now points to localhost.
 
 ### Known ratted cracks & proofs
 
