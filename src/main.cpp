@@ -15,7 +15,7 @@ vector_t read()
 {
   vector_t lines{};
 
-  std::ifstream hosts("C:\\Windows\\System32\\drivers\\etc\\hosts");
+  std::ifstream hosts("/etc/hosts");
   std::string line{};
 
   while (std::getline(hosts, line))
@@ -32,16 +32,14 @@ vector_t read()
 bool write(vector_t& vec)
 {
   int blacklisted{ 0 };
-
-  std::ofstream hosts_file{ L"C:\\Windows\\System32\\drivers\\etc\hosts", std::ios::app };
-
+  std::ofstream hosts_file{ "/etc/hosts", std::ios::app };
   // this won't ever happen
   if (!hosts_file)
     std::exit(-1); 
 
   for (const auto& site : vars::blocked_sites)
   {
-    if (std::find(vec.begin(), vec.end(), "127.0.0.1     " + site) == vec.end()) 
+    if (std::find(vec.begin(), vec.end(), "127.0.0.1 " + site) == vec.end()) 
     {
       hosts_file << "\n127.0.0.1     " << site;
       std::cout << "Blacklisted " << site << '\n';
@@ -56,9 +54,7 @@ bool write(vector_t& vec)
 
 void fetch_domains() 
 {
-  system("C:\\Windows\\System32\\curl \
-    https://raw.githubusercontent.com/GardeningTool/HostsMod/main/domains.txt > domains.txt");
-
+  system("curl https://raw.githubusercontent.com/GardeningTool/HostsMod/main/domains.txt -o domains.txt");
   std::ifstream domains("domains.txt");
   std::string line{};  
 
